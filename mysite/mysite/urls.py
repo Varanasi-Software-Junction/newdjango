@@ -22,6 +22,7 @@ urlpatterns = [
 path("hello/", views.hello),
 path("add/",views.add),
 path("sum/",views.sum),
+path("loops/",views.loop),
 path("", views.index),
 
 ]

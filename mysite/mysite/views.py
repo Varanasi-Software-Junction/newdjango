@@ -15,6 +15,11 @@ def add(request):
 	data={"a":a,"b":b,"sum":sum}
 	return render(request,"getform.html",{"data":data})
 	
+def loop(request):
+	l=[1,2,3,4,5]
+	data={"l":l}
+	return render(request,"loops.html",{"data":data})
+	
 def sum(request):
 	a=0
 	b=0
