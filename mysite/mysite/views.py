@@ -1,8 +1,10 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from bookslab.models import Book
 def index(request):
     html = "<h1>Default View</h1>"
     return HttpResponse(html)
+
 def hello(request):
     return HttpResponse("Hello")
 def add(request):
