@@ -12,6 +12,14 @@ def insert(request):
 	)
 	book.save()
 	return HttpResponse("Inserted")
+
+def delete(request):
+	book=Book.objects.filter(price=399)
+	if len(book)==0:
+		return HttpResponse("None")
+	else:
+		book[0].delete()
+		return HttpResponse("Book Name = " + str(book[0].bookname))
 	
 def find(request):
 	book=Book.objects.filter(price=399)
