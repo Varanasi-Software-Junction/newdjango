@@ -26,4 +26,6 @@ path("sum/",views.sum),
 path("loops/",views.loop),
 path("", views.index),
 path("insert", vw.insert),
+path("all", vw.all),
+path("find/", vw.find),
 ]
