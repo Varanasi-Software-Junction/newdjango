@@ -1,6 +1,25 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from bookslab.models import Book
+
+
+def many(request):
+	command=""
+	bookname=""
+	price=""
+	subject=""
+	result=""
+	if request.GET:
+		command=request.GET["command"]
+	if command=="Insert":
+		bookname=request.GET["bookname"]
+		price=request.GET["bookprice"]
+		subject=request.GET["booksubject"]
+		book=Book(bookname=bookname,price=price,subject=subject)
+		book.save()
+		result="Inserted Successfully"
+	data={"result":result,"name":bookname,"price":price,"subject":subject}
+	return render(request,"insert.html",{"data":data})
 	
 def insert(request):
 	bookname="The Recursion Sutras"# request.GET["bookname"]
