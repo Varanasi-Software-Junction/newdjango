@@ -14,7 +14,7 @@ def insert(request):
 	return HttpResponse("Inserted")
 
 def delete(request):
-	book=Book.objects.filter(price=399)
+	book=Book.objects.filter(price==399)
 	if len(book)==0:
 		return HttpResponse("None")
 	else:
@@ -22,12 +22,13 @@ def delete(request):
 		return HttpResponse("Book Name = " + str(book[0].bookname))
 	
 def find(request):
-	book=Book.objects.filter(price=399)
+	book=Book.objects.filter(price=399) & Book.objects.filter(bookname="Basic Java")
 	if len(book)==0:
 		return HttpResponse("None")
 	else:
 		return HttpResponse("Book Name = " + str(book[0].bookname))
 def all(request):
-	books=Book.objects.all()
+	books=Book.objects.all().order_by('bookname')
 	n=len(books)
-	return HttpResponse("No of books " + str(n))
+	data={"books":books}
+	return render(request,"booksshow.html",{"data":data})
