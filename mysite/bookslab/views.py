@@ -31,9 +31,16 @@ def insert(request):
 	)
 	book.save()
 	return HttpResponse("Inserted")
-
+def update(request):
+	book=Book.objects.filter(price=200)
+	if len(book)==0:
+		return HttpResponse("None")
+	else:
+		book[0].bookname="New Name"
+		book[0].save()
+		return HttpResponse("Book Name = " + str(book[0].bookname))
 def delete(request):
-	book=Book.objects.filter(price==399)
+	book=Book.objects.filter(price=399)
 	if len(book)==0:
 		return HttpResponse("None")
 	else:
