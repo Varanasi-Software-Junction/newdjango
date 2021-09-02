@@ -21,6 +21,7 @@ from bookslab import views as vw
 urlpatterns = [
     path('admin/', admin.site.urls),
 path("hello/", views.hello),
+path("weather/", views.weather),
 path("add/",views.add),
 path("sum/",views.sum),
 path("loops/",views.loop),

@@ -1,9 +1,21 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from bookslab.models import Book
+from bookslab import weather as ww
 def index(request):
     html = "<h1>Default View</h1>"
     return HttpResponse(html)
+	
+def weather(request):
+	city=""
+	result=""
+	if not request.GET:
+		data={"city":city,'result':result}
+		return render(request,"weather.html",{"data":data})
+	city=request.GET["city"]
+	result=ww.getWeather(city)
+	data={"city":city,"result":result}
+	return render(request,"weather.html",{"data":data})
 
 def hello(request):
     return HttpResponse("Hello")
