@@ -2,6 +2,30 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from bookslab.models import Book
 from bookslab import weather as ww
+
+
+from bookslab.imageform import *
+
+# Create your views here.
+def getImage(request):
+	return render(request,'img.html')
+def book_image_view(request):
+
+	if request.method == 'POST':
+		form = ImageForm(request.POST, request.FILES)
+
+		if form.is_valid():
+			form.save()
+			return redirect('success')
+	else:
+		form = ImageForm()
+	return render(request, 'bookimage.html', {'form' : form})
+
+
+def success(request):
+	return HttpResponse('successfully uploaded')
+
+
 def index(request):
     html = "<h1>Default View</h1>"
     return HttpResponse(html)

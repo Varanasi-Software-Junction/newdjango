@@ -9,3 +9,7 @@ class Book(models.Model):
 	class Meta:
 		db_table="book"
 
+
+class BookImage(models.Model):
+	bookname = models.CharField(max_length=50)
+	book_img = models.ImageField(upload_to='images/')

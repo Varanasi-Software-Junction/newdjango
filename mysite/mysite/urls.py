@@ -18,8 +18,12 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 from bookslab import views as vw
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+	path("img/", views.getImage),
 path("hello/", views.hello),
 path("weather/", views.weather),
 path("add/",views.add),
@@ -32,4 +36,9 @@ path("insert", vw.insert),
 path("all", vw.all),
 path("find/", vw.find),
 path("delete/", vw.delete),
+ path('bookimage/', views.book_image_view),
+ path('success', views.success),
 ]
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)

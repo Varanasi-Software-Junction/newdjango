@@ -11,7 +11,7 @@ def getWeather(city):
 		return "error"
 	jsondata=json.loads(response.text)
 	return jsondata
-	
+"""
 print(dt.datetime.fromtimestamp(1624491535))
 appid="4a1f8a61b74546825af1e0be106e797b"
 city="Varanasi"
@@ -41,3 +41,4 @@ else:
     print(main_description)
     temp=jsondata.get("main").get("temp")
     print(temp,"deg Celsius")
+	"""
