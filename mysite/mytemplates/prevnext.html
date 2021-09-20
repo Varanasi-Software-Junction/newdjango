@@ -1,0 +1,16 @@
+<!Doctype>
+<html>
+<head>
+<title>Prev/Next</title>
+</head>
+<body>
+
+<form method="post">n
+{% csrf_token %}
+<h2>Prev Next</h2>
+N<input type="text" name="n" value="{{n}}"/>
+<br>
+<input name="cmd" type="submit" value="<<"/><input name="cmd" type="submit" value=">>"/>
+</form>
+</body>
+</html>

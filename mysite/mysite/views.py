@@ -7,6 +7,27 @@ from bookslab import weather as ww
 from bookslab.imageform import *
 
 # Create your views here.
+
+def prevnext(request):
+	max=5
+	min=0
+	status="ok"
+	if not request.POST:
+		return render(request,'prevnext.html',{"n":1})
+	n=request.POST["n"]
+	cmd=request.POST["cmd"]
+	n=int(n)
+	if cmd==">>":
+		n+=1
+	if cmd=="<<":
+		n-=1
+	if n>max:
+		return HttpResponse("Test over")
+	if n<min:
+		return HttpResponse("Invalid")
+	return render(request,'prevnext.html',{"n":n})
+
+
 def getImage(request):
 	return render(request,'img.html')
 def book_image_view(request):

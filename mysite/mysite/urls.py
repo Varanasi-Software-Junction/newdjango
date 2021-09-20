@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
 	path("img/", views.getImage),
+	path("prevnext/", views.prevnext),
 path("hello/", views.hello),
 path("weather/", views.weather),
 path("add/",views.add),
